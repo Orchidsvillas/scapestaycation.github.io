@@ -2,43 +2,60 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Đặt hàng Orchids Villas</title>
+  <title>Đặt dịch vụ Orchids Villas</title>
 </head>
 <body>
-  <h2>ĐẶT HÀNG ORCHIDS VILLAS</h2>
 
-  <label>Tên khách:</label><br>
-  <input type="text" id="name"><br><br>
+<h2>ĐẶT DỊCH VỤ – ORCHIDS VILLAS</h2>
 
-  <label>Chọn món:</label><br>
-  <select id="item">
-    <option>Cà phê</option>
-    <option>Trà đào</option>
-    <option>Bánh ngọt</option>
-  </select><br><br>
+<label>Số phòng:</label><br>
+<input type="text" id="room" placeholder="Ví dụ: 203"><br><br>
 
-  <label>Số lượng:</label><br>
-  <input type="number" id="qty" value="1"><br><br>
+<label>Chọn dịch vụ:</label><br>
+<select id="service" onchange="updatePrice()">
+  <option value="" disabled selected>-- Chọn dịch vụ --</option>
+  <option value="Khăn tắm" data-price="50000">Khăn tắm – 50.000 VND</option>
+  <option value="Xe máy" data-price="150000">Xe máy – 150.000 VND</option>
+  <option value="Airport pick up" data-price="300000">Airport pick up – 300.000 VND</option>
+  <option value="Dọn vệ sinh" data-price="200000">Dọn vệ sinh – 200.000 VND</option>
+  <option value="Giấy vệ sinh" data-price="20000">Giấy vệ sinh – 20.000 VND</option>
+  <option value="Dụng cụ vệ sinh cá nhân" data-price="0">Dụng cụ vệ sinh cá nhân – 0 VND</option>
+</select><br><br>
 
-  <button onclick="sendWhatsApp()">GỬI ĐƠN QUA WHATSAPP</button>
+<label>Số lượng:</label><br>
+<input type="number" id="qty" value="1" min="1"><br><br>
 
-  <script>
-    function sendWhatsApp() {
-      var name = document.getElementById("name").value;
-      var item = document.getElementById("item").value;
-      var qty = document.getElementById("qty").value;
+<p><strong>Giá:</strong> <span id="price">0</span> VND</p>
 
-      var phone = "84333243243";
+<button onclick="sendWhatsApp()">GỬI YÊU CẦU QUA WHATSAPP</button>
 
-      var text =
-        "Đơn hàng Orchids Villas%0A" +
-        "Tên: " + name + "%0A" +
-        "Món: " + item + "%0A" +
-        "Số lượng: " + qty;
+<script>
+function updatePrice() {
+  var service = document.getElementById("service");
+  var price = service.options[service.selectedIndex].getAttribute("data-price");
+  var qty = document.getElementById("qty").value;
+  document.getElementById("price").innerText = price * qty;
+}
 
-      var url = "https://wa.me/" + phone + "?text=" + text;
-      window.open(url, "_blank");
-    }
-  </script>
+function sendWhatsApp() {
+  var room = document.getElementById("room").value;
+  var service = document.getElementById("service").value;
+  var price = document.getElementById("price").innerText;
+  var qty = document.getElementById("qty").value;
+
+  var phone = "84333243243";
+
+  var text =
+    "ĐƠN DỊCH VỤ – ORCHIDS VILLAS 🌸%0A" +
+    "Phòng: " + room + "%0A" +
+    "Dịch vụ: " + service + "%0A" +
+    "Số lượng: " + qty + "%0A" +
+    "Giá: " + price + " VND";
+
+  var url = "https://wa.me/" + phone + "?text=" + text;
+  window.open(url, "_blank");
+}
+</script>
+
 </body>
 </html>
