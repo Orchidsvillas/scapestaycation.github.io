@@ -117,9 +117,9 @@ button:hover {
 
   <div class="service">
     <label>
-      <input type="checkbox" class="service-check" data-price="50000"
+      <input type="checkbox" class="service-check" data-price="0"
         data-vi="Khăn tắm" data-en="Towel">
-      <span data-vi="Khăn tắm (50.000đ/cái)" data-en="Towel (50,000 VND/item)"></span>
+      <span data-vi="Khăn tắm (0đ/cái)" data-en="Towel (0 VND/item)"></span>
     </label>
     <input type="number" class="qty" min="1" value="1">
   </div>
@@ -141,7 +141,34 @@ button:hover {
     </label>
     <input type="number" class="qty" min="1" value="1">
   </div>
-
+<div class="service">
+  <label>
+    <input type="checkbox" class="service-check" data-price="300000"
+      data-vi="Đón / Tiễn sân bay" data-en="Airport pick-up / drop-off">
+    <span data-vi="Đón / Tiễn sân bay (300.000đ)"
+          data-en="Airport pick-up / drop-off (300,000 VND)"></span>
+  </label>
+  <input type="number" class="qty" min="1" value="1">
+</div>
+  <div class="service">
+  <label>
+    <input type="checkbox" class="service-check" data-price="0"
+      data-vi="Giấy vệ sinh" data-en="Toilet paper">
+    <span data-vi="Giấy vệ sinh (Miễn phí)"
+          data-en="Toilet paper (Free)"></span>
+  </label>
+  <input type="number" class="qty" min="1" value="1">
+</div>
+  <div class="service">
+  <label>
+    <input type="checkbox" class="service-check" data-price="0"
+      data-vi="Bàn chải đánh răng" data-en="Toothbrush">
+    <span data-vi="Bàn chải đánh răng (Miễn phí)"
+          data-en="Toothbrush (Free)"></span>
+  </label>
+  <input type="number" class="qty" min="1" value="1">
+</div>
+  
   <p id="total" style="font-weight:bold; text-align:center;">Tổng tiền: 0 đ</p>
 
   <button onclick="sendWhatsApp()">GỬI ĐƠN QUA WHATSAPP</button>
