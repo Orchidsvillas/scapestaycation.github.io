@@ -11,49 +11,85 @@
 <label>Số phòng:</label><br>
 <input type="text" id="room" placeholder="Ví dụ: 203"><br><br>
 
-<label>Chọn dịch vụ:</label><br>
-<select id="service" onchange="updatePrice()">
-  <option value="" disabled selected>-- Chọn dịch vụ --</option>
-  <option value="Khăn tắm" data-price="50000">Khăn tắm – 50.000 VND</option>
-  <option value="Xe máy" data-price="150000">Xe máy – 150.000 VND</option>
-  <option value="Airport pick up" data-price="300000">Airport pick up – 300.000 VND</option>
-  <option value="Dọn vệ sinh" data-price="200000">Dọn vệ sinh – 200.000 VND</option>
-  <option value="Giấy vệ sinh" data-price="20000">Giấy vệ sinh – 20.000 VND</option>
-  <option value="Dụng cụ vệ sinh cá nhân" data-price="0">Dụng cụ vệ sinh cá nhân – 0 VND</option>
-</select><br><br>
+<strong>Chọn dịch vụ:</strong><br>
 
-<label>Số lượng:</label><br>
-<input type="number" id="qty" value="1" min="1"><br><br>
+<label>
+  <input type="checkbox" class="service" value="Khăn tắm" data-price="50000">
+  Khăn tắm – 50.000 VND
+</label><br>
 
-<p><strong>Giá:</strong> <span id="price">0</span> VND</p>
+<label>
+  <input type="checkbox" class="service" value="Xe máy" data-price="150000">
+  Xe máy – 150.000 VND
+</label><br>
+
+<label>
+  <input type="checkbox" class="service" value="Airport pick up" data-price="300000">
+  Airport pick up – 300.000 VND
+</label><br>
+
+<label>
+  <input type="checkbox" class="service" value="Dọn vệ sinh" data-price="200000">
+  Dọn vệ sinh – 200.000 VND
+</label><br>
+
+<label>
+  <input type="checkbox" class="service" value="Giấy vệ sinh" data-price="20000">
+  Giấy vệ sinh – 20.000 VND
+</label><br>
+
+<label>
+  <input type="checkbox" class="service" value="Dụng cụ vệ sinh cá nhân" data-price="0">
+  Dụng cụ vệ sinh cá nhân – 0 VND
+</label><br><br>
+
+<p><strong>Tổng tiền:</strong> <span id="total">0</span> VND</p>
 
 <button onclick="sendWhatsApp()">GỬI YÊU CẦU QUA WHATSAPP</button>
 
 <script>
-function updatePrice() {
-  var service = document.getElementById("service");
-  var price = service.options[service.selectedIndex].getAttribute("data-price");
-  var qty = document.getElementById("qty").value;
-  document.getElementById("price").innerText = price * qty;
+const checkboxes = document.querySelectorAll(".service");
+
+checkboxes.forEach(cb => {
+  cb.addEventListener("change", updateTotal);
+});
+
+function updateTotal() {
+  let total = 0;
+  checkboxes.forEach(cb => {
+    if (cb.checked) {
+      total += parseInt(cb.dataset.price);
+    }
+  });
+  document.getElementById("total").innerText = total;
 }
 
 function sendWhatsApp() {
-  var room = document.getElementById("room").value;
-  var service = document.getElementById("service").value;
-  var price = document.getElementById("price").innerText;
-  var qty = document.getElementById("qty").value;
+  const room = document.getElementById("room").value;
+  let servicesText = "";
+  let total = 0;
 
-  var phone = "84333243243";
+  checkboxes.forEach(cb => {
+    if (cb.checked) {
+      servicesText += "- " + cb.value + " (" + cb.dataset.price + " VND)%0A";
+      total += parseInt(cb.dataset.price);
+    }
+  });
 
-  var text =
+  if (servicesText === "") {
+    alert("Vui lòng chọn ít nhất 1 dịch vụ");
+    return;
+  }
+
+  const phone = "84333243243";
+
+  const text =
     "ĐƠN DỊCH VỤ – ORCHIDS VILLAS 🌸%0A" +
-    "Phòng: " + room + "%0A" +
-    "Dịch vụ: " + service + "%0A" +
-    "Số lượng: " + qty + "%0A" +
-    "Giá: " + price + " VND";
+    "Phòng: " + room + "%0A%0A" +
+    "Dịch vụ:%0A" + servicesText + "%0A" +
+    "Tổng tiền: " + total + " VND";
 
-  var url = "https://wa.me/" + phone + "?text=" + text;
-  window.open(url, "_blank");
+  window.open("https://wa.me/" + phone + "?text=" + text, "_blank");
 }
 </script>
 
