@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scape Staycation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#fff;
+}
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(0,0,0,0.55);
+    padding:20px 50px;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+}
+
+.hero{
+    height:100vh;
+    background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:white;
+    width:90%;
+    max-width:1300px;
+}
+
+.hero-content h1{
+    font-size:56px;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:20px;
+    margin-bottom:40px;
+}
+
+.booking-box{
+    background:rgba(255,255,255,0.88);
+    padding:25px;
+    border-radius:20px;
+}
+
+.booking-form{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:15px;
+}
+
+.booking-form input,
+.booking-form select{
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.booking-form button{
+    background:#d4af37;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    padding:15px;
+}
+
+section{
+    padding:80px 50px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:40px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.about{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.contact{
+    text-align:center;
+    font-size:18px;
+    line-height:2;
+}
+
+@media(max-width:900px){
+    .booking-form{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content h1{
+        font-size:36px;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">SCAPE STAYCATION</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#villas">Villas</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        <h1>Luxury Coastal Stay Experience</h1>
+        <p>Book your perfect villa with Scape Staycation</p>
+
+        <div class="booking-box">
+            <form class="booking-form" onsubmit="sendBooking(event)">
+                <select id="villa">
+                    <option>Choose Villa</option>
+                    <option>Beachfront Villa</option>
+                    <option>Garden Villa</option>
+                    <option>Private Pool Villa</option>
+                </select>
+
+                <input type="date" id="checkin">
+                <input type="date" id="checkout">
+                <input type="text" id="guest" placeholder="Guest Name">
+
+                <input type="number" id="adults" placeholder="Adults">
+                <input type="number" id="children" placeholder="Children">
+                <input type="text" id="phone" placeholder="Phone Number">
+
+                <button type="submit">BOOK NOW</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section id="villas">
+    <h2 class="section-title">Our Villas</h2>
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b">
+        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461">
+    </div>
+</section>
+
+<section id="about">
+    <h2 class="section-title">About Scape Staycation</h2>
+    <div class="about">
+        We create premium hospitality experiences, villa management solutions,
+        and unforgettable coastal stays in Vietnam.
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact">
+        WhatsApp Booking Available<br>
+        Scape Staycation
+    </div>
+</section>
+
+<script>
+function sendBooking(event){
+    event.preventDefault();
+
+    const villa = document.getElementById('villa').value;
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const guest = document.getElementById('guest').value;
+    const adults = document.getElementById('adults').value;
+    const children = document.getElementById('children').value;
+    const phone = document.getElementById('phone').value;
+
+    const message =
+`Hello Scape Staycation
+
+Villa: ${villa}
+Check in: ${checkin}
+Check out: ${checkout}
+Guest: ${guest}
+Adults: ${adults}
+Children: ${children}
+Phone: ${phone}`;
+
+    window.open(`https://wa.me/84900000000?text=${encodeURIComponent(message)}`);
+}
+</script>
+
+</body>
+</html>
