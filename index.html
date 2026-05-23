@@ -1,541 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scape Staycation</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#f7f3ed;
-    color:#1f2933;
-}
-
-header{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:1000;
-    background:rgba(7,28,45,0.92);
-    padding:18px 48px;
-}
-
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    color:white;
-    font-size:26px;
-    font-weight:bold;
-    letter-spacing:2px;
-}
-
-nav ul{
-    display:flex;
-    align-items:center;
-    list-style:none;
-    gap:28px;
-}
-
-nav ul li{
-    position:relative;
-}
-
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-size:14px;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
-
-.dropdown{
-    position:absolute;
-    top:30px;
-    left:0;
-    background:white;
-    min-width:190px;
-    display:none;
-    box-shadow:0 12px 30px rgba(0,0,0,0.2);
-    border-radius:4px;
-    overflow:hidden;
-}
-
-.dropdown a{
-    display:block;
-    color:#1f2933;
-    padding:14px 18px;
-    text-transform:none;
-    font-size:14px;
-    letter-spacing:0;
-}
-
-.dropdown a:hover{
-    background:#f3f3f3;
-}
-
-nav ul li:hover .dropdown{
-    display:block;
-}
-
-.hero{
-    height:100vh;
-    background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-}
-
-.overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.35);
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    text-align:center;
-    color:white;
-    width:90%;
-    max-width:1300px;
-    padding-top:80px;
-}
-
-.hero-content h1{
-    font-size:54px;
-    margin-bottom:15px;
-}
-
-.hero-content p{
-    font-size:19px;
-    margin-bottom:35px;
-}
-
-.booking-box{
-    background:rgba(255,255,255,0.88);
-    padding:24px;
-    border-radius:18px;
-    max-width:1100px;
-    margin:auto;
-}
-
-.booking-form{
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1fr;
-    gap:14px;
-}
-
-.booking-form input,
-.booking-form select{
-    padding:15px;
-    border:none;
-    border-radius:9px;
-    font-size:15px;
-}
-
-.booking-form button{
-    background:#d4a017;
-    color:white;
-    border:none;
-    border-radius:9px;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-    padding:15px;
-}
-
-section{
-    padding:85px 55px;
-}
-
-.section-title{
-    text-align:center;
-    font-size:38px;
-    margin-bottom:14px;
-    color:#0b2b42;
-}
-
-.section-subtitle{
-    text-align:center;
-    max-width:760px;
-    margin:0 auto 45px;
-    color:#5b6670;
-    line-height:1.7;
-}
-
-.villa-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
-    max-width:1200px;
-    margin:auto;
-}
-
-.villa-card{
-    background:white;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 12px 35px rgba(0,0,0,0.12);
-}
-
-.villa-card img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-}
-
-.villa-content{
-    padding:24px;
-}
-
-.villa-content h3{
-    font-size:24px;
-    margin-bottom:14px;
-    color:#0b2b42;
-}
-
-.villa-content p{
-    color:#5b6670;
-    line-height:1.7;
-    margin-bottom:18px;
-}
-
-.villa-info{
-    font-size:14px;
-    color:#333;
-    margin-bottom:18px;
-    line-height:1.8;
-}
-
-.card-buttons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.book-btn,
-.detail-btn{
-    text-align:center;
-    padding:12px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.book-btn{
-    background:#d4a017;
-    color:white;
-}
-
-.detail-btn{
-    border:1px solid #0b2b42;
-    color:#0b2b42;
-}
-
-.management{
-    background:#0b2b42;
-    color:white;
-}
-
-.management .section-title{
-    color:white;
-}
-
-.management-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:25px;
-    max-width:1150px;
-    margin:auto;
-}
-
-.service-box{
-    background:rgba(255,255,255,0.08);
-    padding:28px;
-    border-radius:14px;
-}
-
-.service-box h3{
-    margin-bottom:12px;
-    color:#f3c969;
-}
-
-.about{
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-    font-size:18px;
-    line-height:1.9;
-}
-
-.contact{
-    text-align:center;
-    font-size:18px;
-    line-height:2;
-}
-
-footer{
-    background:#071c2d;
-    color:white;
-    text-align:center;
-    padding:28px;
-}
-
-@media(max-width:900px){
-    header{
-        padding:16px 20px;
-    }
-
-    nav{
-        flex-direction:column;
-        gap:15px;
-    }
-
-    nav ul{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:18px;
-    }
-
-    .dropdown{
-        position:static;
-        margin-top:10px;
-    }
-
-    .booking-form{
-        grid-template-columns:1fr;
-    }
-
-    .villa-grid,
-    .management-grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero-content h1{
-        font-size:34px;
-    }
-
-    section{
-        padding:65px 22px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scape Staycation</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
+    <div class="logo">SCAPE STAYCATION</div>
+
     <nav>
-        <div class="logo">SCAPE STAYCATION</div>
-
-        <ul>
-            <li><a href="#home">Home</a></li>
-
-            <li>
-                <a href="#villas">Villas</a>
-                <div class="dropdown">
-                    <a href="#villas">House</a>
-                    <a href="#villas">Pool Villa</a>
-                    <a href="#villas">Studio</a>
-                    <a href="#villas">Apartment</a>
-                </div>
-            </li>
-
-            <li><a href="#management">Management</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <a href="index.html">Home</a>
+        <a href="villas.html">Villas</a>
+        <a href="#">Management</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
     </nav>
 </header>
 
-<section class="hero" id="home">
-    <div class="overlay"></div>
-
+<section class="hero">
     <div class="hero-content">
         <h1>Luxury Coastal Stay Experience</h1>
         <p>Book your perfect villa with Scape Staycation</p>
 
         <div class="booking-box">
-            <form class="booking-form" onsubmit="sendBooking(event)">
-                <select id="villa">
-                    <option>Choose Villa</option>
-                    <option>Orchids Villas</option>
-                    <option>Antique HoiAn Villa</option>
-                    <option>Premier Villa</option>
-                    <option>Luxury English House</option>
-                </select>
+            <select id="villa">
+                <option>Choose Villa</option>
+                <option>Orchids Villas</option>
+                <option>Antique HoiAn Villa</option>
+                <option>Premier Villa</option>
+                <option>Luxury English House</option>
+            </select>
 
-                <input type="date" id="checkin">
-                <input type="date" id="checkout">
-                <input type="text" id="guest" placeholder="Guest Name">
+            <input type="date" id="checkin">
+            <input type="date" id="checkout">
+            <input type="text" id="guest" placeholder="Guest Name">
 
-                <input type="number" id="adults" placeholder="Adults">
-                <input type="number" id="children" placeholder="Children">
-                <input type="text" id="phone" placeholder="Phone Number">
+            <input type="number" id="adults" placeholder="Adults">
+            <input type="number" id="children" placeholder="Children">
+            <input type="text" id="phone" placeholder="Phone Number">
 
-                <button type="submit">BOOK NOW</button>
-            </form>
+            <button onclick="bookNow()">BOOK NOW</button>
         </div>
     </div>
 </section>
 
-<section id="villas">
-    <h2 class="section-title">Our Villas</h2>
-    <p class="section-subtitle">
-        Discover a curated collection of private villas, coastal homes and boutique stays in Vietnam.
-    </p>
+<section class="villas-preview">
+    <h2>Featured Villas</h2>
 
     <div class="villa-grid">
 
         <div class="villa-card">
             <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80">
-            <div class="villa-content">
+            <div class="villa-card-content">
                 <h3>Orchids Villas</h3>
-                <div class="villa-info">
-                    🛏 1 bedrooms<br>
+                <p>
+                    🛏 1 bedroom<br>
                     📍 Da Nang, Vietnam<br>
                     👥 Up to 2 guests
-                </div>
-                <p>A peaceful private villa designed for family stays, retreats and long-stay guests.</p>
-                <div class="card-buttons">
-                    <a class="book-btn" href="#home">Book</a>
-                    <a class="detail-btn" href="#">Detail</a>
-                </div>
+                </p>
+                <p>A peaceful private villa designed for intimate boutique stays and premium hospitality experiences.</p>
+                <a href="villas.html">View Details</a>
             </div>
         </div>
 
         <div class="villa-card">
             <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80">
-            <div class="villa-content">
+            <div class="villa-card-content">
                 <h3>Antique HoiAn Villa</h3>
-                <div class="villa-info">
+                <p>
                     🛏 5 bedrooms<br>
                     📍 An Bang Beach<br>
                     👥 Up to 10 guests
-                </div>
-                <p>Wake up by the ocean and enjoy a calm tropical stay steps away from the beach.</p>
-                <div class="card-buttons">
-                    <a class="book-btn" href="#home">Book</a>
-                    <a class="detail-btn" href="#">Detail</a>
-                </div>
+                </p>
+                <p>Wake up near the ocean and enjoy a tropical private villa experience designed for families and groups.</p>
+                <a href="villas.html">View Details</a>
             </div>
         </div>
 
         <div class="villa-card">
             <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=900&q=80">
-            <div class="villa-content">
+            <div class="villa-card-content">
                 <h3>Premier Villa</h3>
-                <div class="villa-info">
+                <p>
                     🛏 4 bedrooms<br>
                     📍 Da Nang / Hoi An<br>
                     👥 Up to 8 guests
-                </div>
-                <p>A boutique villa with private pool, warm interiors and personalized guest support.</p>
-                <div class="card-buttons">
-                    <a class="book-btn" href="#home">Book</a>
-                    <a class="detail-btn" href="#">Detail</a>
-                </div>
+                </p>
+                <p>A boutique private pool villa offering premium design, guest comfort and curated hospitality service.</p>
+                <a href="villas.html">View Details</a>
+            </div>
+        </div>
+
+        <div class="villa-card">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80">
+            <div class="villa-card-content">
+                <h3>Luxury English House</h3>
+                <p>
+                    🛏 3 bedrooms<br>
+                    📍 Da Nang / Hoi An<br>
+                    👥 Up to 6 guests
+                </p>
+                <p>An elegant English-inspired private house combining timeless interiors with premium short-stay comfort.</p>
+                <a href="villas.html">View Details</a>
             </div>
         </div>
 
     </div>
 </section>
 
-<section class="management" id="management">
-    <h2 class="section-title">Villa Management</h2>
-    <p class="section-subtitle">
-        Scape Staycation helps villa owners manage operations, guest experience, OTA marketing and revenue.
-    </p>
-
-    <div class="management-grid">
-        <div class="service-box">
-            <h3>OTA Management</h3>
-            <p>Airbnb, Booking, Agoda listing setup and optimization.</p>
-        </div>
-
-        <div class="service-box">
-            <h3>Guest Service</h3>
-            <p>Booking support, check-in guidance and guest communication.</p>
-        </div>
-
-        <div class="service-box">
-            <h3>Housekeeping</h3>
-            <p>Cleaning coordination, linen quality and villa readiness.</p>
-        </div>
-
-        <div class="service-box">
-            <h3>Revenue Strategy</h3>
-            <p>Pricing, occupancy planning and monthly performance review.</p>
-        </div>
-    </div>
-</section>
-
-<section id="about">
-    <h2 class="section-title">About Scape Staycation</h2>
-    <div class="about">
-        Scape Staycation is a boutique hospitality and villa management brand in Vietnam.
-        We focus on creating beautiful stays, professional operations and direct booking experiences
-        for guests and villa owners.
-    </div>
-</section>
-
-<section id="contact">
-    <h2 class="section-title">Contact</h2>
-    <div class="contact">
-        WhatsApp Booking Available<br>
-        Email: orchidsvillas@scapestaycation.com<br>
-        Vietnam
-    </div>
-</section>
-
-<footer>
-    © 2026 Scape Staycation. All rights reserved.
-</footer>
-
-<script>
-function sendBooking(event){
-    event.preventDefault();
-
-    const villa = document.getElementById('villa').value;
-    const checkin = document.getElementById('checkin').value;
-    const checkout = document.getElementById('checkout').value;
-    const guest = document.getElementById('guest').value;
-    const adults = document.getElementById('adults').value;
-    const children = document.getElementById('children').value;
-    const phone = document.getElementById('phone').value;
-
-    const message =
-`Hello Scape Staycation
-
-I would like to book a villa.
-
-Villa: ${villa}
-Check in: ${checkin}
-Check out: ${checkout}
-Guest name: ${guest}
-Adults: ${adults}
-Children: ${children}
-Phone: ${phone}`;
-
-    window.open(`https://wa.me/84333243243?text=${encodeURIComponent(message)}`);
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
