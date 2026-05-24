@@ -28,3 +28,24 @@ Phone: ${phone}`;
 
   window.open(whatsapp, "_blank");
 }
+function bookService() {
+  let villa = document.getElementById("serviceVilla").value;
+  let service = document.getElementById("serviceName").value;
+  let date = document.getElementById("serviceDate").value;
+  let room = document.getElementById("roomNumber").value;
+  let phone = document.getElementById("servicePhone").value;
+
+  let message =
+`SCAPE STAYCATION SERVICE REQUEST
+
+Villa: ${villa}
+Service: ${service}
+Date: ${date}
+Room number: ${room}
+Phone: ${phone}`;
+
+  let whatsapp =
+"https://wa.me/84333243243?text=" + encodeURIComponent(message);
+
+  window.open(whatsapp, "_blank");
+}
