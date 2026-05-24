@@ -26,37 +26,40 @@
         <p>Request housekeeping, transportation, tickets and tours directly through WhatsApp</p>
 
         <div class="booking-box">
-            <select id="serviceVilla">
-                <option>Choose Villa</option>
-                <option>Orchids Villas</option>
-                <option>Antique HoiAn Villa</option>
-                <option>Premier Villa</option>
-                <option>Luxury English House</option>
-            </select>
+    <select id="serviceVilla">
+        <option>Choose Villa</option>
+        <option>Orchids Villas</option>
+        <option>Antique HoiAn Villa</option>
+        <option>Premier Villa</option>
+        <option>Luxury English House</option>
+    </select>
 
-           <select id="serviceName">
-    <option>Choose Service</option>
-    <option>Housekeeping Service</option>
-    <option>Towel Replacement</option>
-    <option>Airport Pickup</option>
-    <option>Airport Drop-off</option>
-    <option>Ba Na Hills Tickets</option>
-    <option>Cham Island Tour</option>
-    <option>Coconut Forest Tickets</option>
-    <option>Motorbike Rental</option>
-    <option>Car Rental</option>
-</select>
+    <select id="serviceName" onchange="updateServiceFields()">
+        <option>Choose Service</option>
+        <option>Housekeeping Service</option>
+        <option>Towel Replacement</option>
+        <option>Airport Pickup</option>
+        <option>Airport Drop-off</option>
+        <option>Ba Na Hills Tickets</option>
+        <option>Cham Island Tour</option>
+        <option>Coconut Forest Tickets</option>
+        <option>Motorbike Rental</option>
+        <option>Car Rental</option>
+    </select>
 
-            <input type="date" id="serviceDate">
-            <input type="time" id="serviceTime">
+    <input type="date" id="serviceDate">
+    <input type="time" id="serviceTime">
 
-            <input type="text" id="roomNumber" placeholder="Room number">
-            <input type="number" id="serviceQuantity" placeholder="Quantity / Guests / Days">
-            <input type="text" id="servicePhone" placeholder="Phone number">
-            <input type="text" id="serviceNote" placeholder="Note: flight time, pickup point, request...">
+    <input type="text" id="roomNumber" placeholder="Room number">
+    <input type="text" id="servicePhone" placeholder="Phone number">
 
-            <button onclick="bookService()">BOOK NOW</button>
-        </div>
+    <input type="text" id="extraField1" placeholder="Extra information">
+    <input type="text" id="extraField2" placeholder="Additional detail">
+
+    <input type="text" id="serviceNote" placeholder="Note: flight time, pickup location, special request...">
+
+    <button onclick="bookService()">BOOK NOW</button>
+</div>
     </div>
 </section>
 
