@@ -37,8 +37,8 @@ function getServicePrice(service) {
     "Cham Island Tour": "1,000,000 VND / pax",
     "Airport Pickup": "300,000 VND",
     "Airport Drop-off": "300,000 VND",
-    "Housekeeping Service": "Price confirmed via WhatsApp",
-    "Towel Replacement": "Price confirmed via WhatsApp"
+    "Housekeeping Service": "Free",
+    "Towel Replacement": "Free"
   };
 
   return prices[service] || "Please choose a service";
