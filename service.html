@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guest Services | Scape Staycation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">SCAPE STAYCATION</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="villas.html">Villas</a>
+        <a href="service.html">Service</a>
+        <a href="management.html">Management</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Guest Services</h1>
+        <p>Request villa services directly through WhatsApp</p>
+
+        <div class="booking-box">
+            <select id="serviceVilla">
+                <option>Choose Villa</option>
+                <option>Orchids Villas</option>
+                <option>Antique HoiAn Villa</option>
+                <option>Premier Villa</option>
+                <option>Luxury English House</option>
+            </select>
+
+            <select id="serviceName">
+                <option>Choose Service</option>
+                <option>Dọn vệ sinh</option>
+                <option>Thay khăn</option>
+                <option>Xe đón sân bay</option>
+                <option>Xe tiễn sân bay</option>
+                <option>Vé Bà Nà</option>
+                <option>Tour Cù Lao Chàm</option>
+                <option>Vé rừng dừa Bảy Mẫu</option>
+                <option>Thuê xe máy</option>
+                <option>Thuê xe ô tô</option>
+            </select>
+
+            <input type="date" id="serviceDate">
+            <input type="text" id="roomNumber" placeholder="Room number">
+
+            <input type="text" id="servicePhone" placeholder="Phone number">
+
+            <button onclick="bookService()">BOOK NOW</button>
+        </div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
