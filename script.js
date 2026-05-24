@@ -32,8 +32,11 @@ function bookService() {
   let villa = document.getElementById("serviceVilla").value;
   let service = document.getElementById("serviceName").value;
   let date = document.getElementById("serviceDate").value;
+  let time = document.getElementById("serviceTime").value;
   let room = document.getElementById("roomNumber").value;
+  let quantity = document.getElementById("serviceQuantity").value;
   let phone = document.getElementById("servicePhone").value;
+  let note = document.getElementById("serviceNote").value;
 
   let message =
 `SCAPE STAYCATION SERVICE REQUEST
@@ -41,11 +44,14 @@ function bookService() {
 Villa: ${villa}
 Service: ${service}
 Date: ${date}
+Time: ${time}
 Room number: ${room}
-Phone: ${phone}`;
+Quantity / Guests / Days: ${quantity}
+Phone: ${phone}
+Note: ${note}`;
 
   let whatsapp =
-"https://wa.me/84333243243?text=" + encodeURIComponent(message);
+"https://wa.me/84904624675?text=" + encodeURIComponent(message);
 
   window.open(whatsapp, "_blank");
 }
