@@ -25,45 +25,67 @@
         <h1>Guest Services</h1>
         <p>Request housekeeping, transportation, tickets and tours directly through WhatsApp</p>
 
-        <div class="booking-box">
-    <select id="serviceVilla">
-        <option>Choose Villa</option>
-        <option>Orchids Villas</option>
-        <option>Antique HoiAn Villa</option>
-        <option>Premier Villa</option>
-        <option>Luxury English House</option>
-    </select>
+        <div class="booking-box service-box-layout">
 
-    <select id="serviceName" onchange="updateServiceFields()">
-        <option>Choose Service</option>
-        <option>Housekeeping Service</option>
-        <option>Towel Replacement</option>
-        <option>Airport Pickup</option>
-        <option>Airport Drop-off</option>
-        <option>Ba Na Hills Tickets</option>
-        <option>Cham Island Tour</option>
-        <option>Coconut Forest Tickets</option>
-        <option>Motorbike Rental</option>
-        <option>Car Rental</option>
-    </select>
+            <div class="service-main">
 
-    <input type="date" id="serviceDate">
-    <input type="time" id="serviceTime">
+                <select id="serviceVilla">
+                    <option>Choose Villa</option>
+                    <option>Orchids Villas</option>
+                    <option>Antique HoiAn Villa</option>
+                    <option>Premier Villa</option>
+                    <option>Luxury English House</option>
+                </select>
 
-    <input type="text" id="roomNumber" placeholder="Room number">
-    <input type="text" id="servicePhone" placeholder="Phone number">
+                <select id="serviceName" onchange="updateServicePrice()">
+                    <option>Choose Service</option>
+                    <option>Housekeeping Service</option>
+                    <option>Towel Replacement</option>
+                    <option>Airport Pickup</option>
+                    <option>Airport Drop-off</option>
+                    <option>Ba Na Hills Tickets</option>
+                    <option>Cham Island Tour</option>
+                    <option>Coconut Forest Tickets</option>
+                    <option>Motorbike Rental</option>
+                    <option>Car Rental</option>
+                </select>
 
-    <input type="text" id="extraField1" placeholder="Extra information">
-    <input type="text" id="extraField2" placeholder="Additional detail">
+                <input type="date" id="serviceDate">
+                <input type="time" id="serviceTime">
 
-    <input type="text" id="serviceNote" placeholder="Note: flight time, pickup location, special request...">
+                <div class="price-box">
+                    <div>
+                        <strong>Service Price</strong><br>
+                        <span id="servicePrice">Please choose a service</span>
+                    </div>
+                    <small>The final total will be confirmed via WhatsApp.</small>
+                </div>
 
-    <button onclick="bookService()">BOOK NOW</button>
-</div>
+                <input type="text" id="roomNumber" placeholder="Room number">
+                <input type="text" id="servicePhone" placeholder="Phone number">
+                <input type="text" id="extraField1" placeholder="Extra information">
+
+                <input type="number" id="serviceQuantity" placeholder="Quantity / Guests / Rental Days">
+                <input type="text" id="serviceNote" placeholder="Note: flight time, pickup location, special request...">
+
+                <button onclick="bookService()">BOOK NOW</button>
+            </div>
+
+            <div class="service-price-list">
+                <h3>Service Price List</h3>
+                <p><span>Motorbike Rental</span><strong>150,000 VND / day</strong></p>
+                <p><span>Car Rental</span><strong>2,000,000 VND</strong></p>
+                <p><span>Ba Na Hills Tickets</span><strong>1,200,000 VND / pax</strong></p>
+                <p><span>Coconut Forest Tickets</span><strong>450,000 VND / pax</strong></p>
+                <p><span>Cham Island Tour</span><strong>1,000,000 VND / pax</strong></p>
+                <p><span>Airport Pickup</span><strong>300,000 VND</strong></p>
+                <p><span>Airport Drop-off</span><strong>300,000 VND</strong></p>
+            </div>
+
+        </div>
     </div>
 </section>
 
 <script src="script.js"></script>
-
 </body>
 </html>
