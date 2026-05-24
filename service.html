@@ -23,7 +23,7 @@
 <section class="hero">
     <div class="hero-content">
         <h1>Guest Services</h1>
-        <p>Request villa services directly through WhatsApp</p>
+        <p>Request housekeeping, transportation, tickets and tours directly through WhatsApp</p>
 
         <div class="booking-box">
             <select id="serviceVilla">
@@ -48,9 +48,12 @@
             </select>
 
             <input type="date" id="serviceDate">
-            <input type="text" id="roomNumber" placeholder="Room number">
+            <input type="time" id="serviceTime">
 
+            <input type="text" id="roomNumber" placeholder="Room number">
+            <input type="number" id="serviceQuantity" placeholder="Quantity / Guests / Days">
             <input type="text" id="servicePhone" placeholder="Phone number">
+            <input type="text" id="serviceNote" placeholder="Note: flight time, pickup point, request...">
 
             <button onclick="bookService()">BOOK NOW</button>
         </div>
